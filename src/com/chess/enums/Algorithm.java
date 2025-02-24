@@ -1,5 +1,6 @@
 package com.chess.enums;
 
+import com.chess.algorithms.InsertionSort;
 import com.chess.algorithms.QuickSort;
 import com.chess.algorithms.BubbleSort;
 import com.chess.myexceptions.AlgorithmTypeError;
@@ -44,7 +45,8 @@ public enum Algorithm {
 
     public SortingStrategy<?> getSortingStrategy() {
         return switch (this) {
-            case MERGE_SORT, QUICK_SORT, INSERTION_SORT -> new QuickSort<>();
+            case MERGE_SORT, QUICK_SORT -> new QuickSort<>();
+            case INSERTION_SORT -> new InsertionSort<>();
             case BUBBLE_SORT -> new BubbleSort<>();
             default -> null;
         };
