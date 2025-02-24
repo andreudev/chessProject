@@ -25,13 +25,13 @@ public class ChessGame {
         this.algorithm = Algorithm.checkFromString(map.get("a"));
         this.dataType = DataType.checkFromString(map.get("t"));
         this.color = Color.checkFromInitial(map.get("c"));
-        this.numbers = Numbers.checkFromValue(Integer.parseInt(map.get("n")));
+        this.numbers = Numbers.checkFromValue(Integer.parseInt(map.get("r")));
         setPieces();
         System.out.println("Algorithm: " + (algorithm != null ? algorithm.getAlgorithm() : null));
         System.out.println("Type: " + (dataType != null ? dataType.getDescription() : null));
         System.out.println("Color: " + (color != null ? color.getName() : null));
-        System.out.println("Pieces: " + pieces);
         System.out.println("Numbers: " + (numbers != null ? numbers.getValue() : null));
+        System.out.println("Pieces: " + pieces);
         selectAlgorithm();
         System.out.println("Sorted pieces: " + pieces);
     }
@@ -55,8 +55,8 @@ public class ChessGame {
     private PiecesList<?> generateRandomPieces(String type) {
         if (type.equals("c")) {
             List<Character> list = new ArrayList<>();
-            while (list.size() < 16) {
-                int piece = 'a' + random.nextInt(16);
+            while (list.size() < numbers.getValue()) {
+                int piece = 'a' + random.nextInt(numbers.getValue());
                 if (!list.contains((char) piece)) {
                     list.add((char) piece);
                 }
@@ -64,8 +64,8 @@ public class ChessGame {
             return new PiecesList<>(list);
         } else if (type.equals("n")) {
             List<Integer> list = new ArrayList<>();
-            while (list.size() < 16) {
-                int piece = random.nextInt(16) + 1;
+            while (list.size() < numbers.getValue()) {
+                int piece = random.nextInt(numbers.getValue()) + 1;
                 if (!list.contains(piece)) {
                     list.add(piece);
                 }
