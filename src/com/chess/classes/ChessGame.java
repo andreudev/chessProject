@@ -7,10 +7,7 @@ import com.chess.enums.DataType;
 import com.chess.enums.Numbers;
 import com.chess.utils.YArgs;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class ChessGame {
     private final Algorithm algorithm;
@@ -21,7 +18,7 @@ public class ChessGame {
     private final Random random = new Random();
 
     public ChessGame(String[] args) {
-        HashMap<String, String> map = YArgs.splitArgs(args);
+        Map<String, String> map = YArgs.splitArgs(args);
         this.algorithm = Algorithm.checkFromString(map.get("a"));
         this.dataType = DataType.checkFromString(map.get("t"));
         this.color = Color.checkFromInitial(map.get("c"));

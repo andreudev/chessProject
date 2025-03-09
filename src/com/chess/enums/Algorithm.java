@@ -6,7 +6,7 @@ import com.chess.algorithms.BubbleSort;
 import com.chess.myexceptions.AlgorithmTypeError;
 import com.chess.myinterfaces.SortingStrategy;
 
-public enum Algorithm {
+public enum Algorithm{
     MERGE_SORT("Merge sort","m"), QUICK_SORT("Quick sort","q"), INSERTION_SORT("Insertion sort","i"), BUBBLE_SORT("Bubble sort","b");
 
     private final String algorithm;
