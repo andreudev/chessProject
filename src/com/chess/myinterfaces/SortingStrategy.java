@@ -1,8 +1,7 @@
 package com.chess.myinterfaces;
 
-import java.util.List;
+import com.chess.arrays.PiecesList;
 
-public interface SortingStrategy <T extends Comparable<T>>{
-    void sort(List<T> list);
-
+public interface SortingStrategy<T extends Comparable<T>> {
+    void sort(PiecesList<T> list, BoardView view);
 }

@@ -2,6 +2,7 @@ package com.chess.arrays;
 
 import com.chess.algorithms.BubbleSort;
 import com.chess.myinterfaces.SortingStrategy;
+import com.chess.myinterfaces.BoardView;
 
 import java.util.*;
 
@@ -22,8 +23,8 @@ public class PiecesList<T extends Comparable<T>> extends AbstractList<T> {
         this.sortingStrategy = (SortingStrategy<T>) sortingStrategy;
     }
 
-    public void sort() {
-        sortingStrategy.sort(pieces);
+    public void sort(BoardView view) {
+        sortingStrategy.sort(this, view);
     }
 
     @Override
@@ -36,11 +37,17 @@ public class PiecesList<T extends Comparable<T>> extends AbstractList<T> {
         return pieces.get(index);
     }
 
+    @Override
+    public T set(int index, T element) {
+        return pieces.set(index, element);
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         PiecesList<?> that = (PiecesList<?>) o;
         return Objects.equals(pieces, that.pieces);
     }
@@ -49,5 +56,4 @@ public class PiecesList<T extends Comparable<T>> extends AbstractList<T> {
     public int hashCode() {
         return Objects.hash(pieces);
     }
-
 }
