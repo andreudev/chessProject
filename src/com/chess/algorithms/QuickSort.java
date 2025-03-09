@@ -6,6 +6,12 @@ import com.chess.classes.pieces.Piece;
 import com.chess.arrays.PiecesList;
 
 public class QuickSort<T extends Comparable<T>> implements SortingStrategy<T> {
+    private final int interval;
+
+    public QuickSort(int interval) {
+        this.interval = interval;
+    }
+
     @Override
     public void sort(PiecesList<T> list, BoardView view) {
         quickSort(list, 0, list.size() - 1, view);
@@ -15,6 +21,11 @@ public class QuickSort<T extends Comparable<T>> implements SortingStrategy<T> {
         if (low < high) {
             int pi = partition(list, low, high, view);
             view.displayBoard((PiecesList<Piece>) list);
+            try {
+                Thread.sleep(interval);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
             quickSort(list, low, pi - 1, view);
             quickSort(list, pi + 1, high, view);
         }
@@ -30,12 +41,22 @@ public class QuickSort<T extends Comparable<T>> implements SortingStrategy<T> {
                 list.set(i, list.get(j));
                 list.set(j, temp);
                 view.displayBoard((PiecesList<Piece>) list);
+                try {
+                    Thread.sleep(interval);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
             }
         }
         T temp = list.get(i + 1);
         list.set(i + 1, list.get(high));
         list.set(high, temp);
         view.displayBoard((PiecesList<Piece>) list);
+        try {
+            Thread.sleep(interval);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         return i + 1;
     }
 }

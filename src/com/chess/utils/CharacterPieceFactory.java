@@ -10,9 +10,9 @@ public class CharacterPieceFactory implements PieceFactory {
         return switch (character) {
         case 'a' -> new King();
         case 'b' -> new Queen();
-        case 'c', 'd' -> new Rook();
-        case 'e', 'f' -> new Bishop();
-        case 'g', 'h' -> new Knight();
+        case 'c', 'd' -> new Bishop();
+        case 'e', 'f' -> new Knight();
+        case 'g', 'h' -> new Rook();
         default -> new Pawn();
         };
     }

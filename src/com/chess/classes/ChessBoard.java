@@ -14,6 +14,7 @@ import com.chess.utils.PieceGenerator;
 public class ChessBoard {
     private PiecesList<Piece> pieces;
     private BoardView view;
+    private int interval;
 
     public void setPieces(DataType dataType, Numbers numbers, Color color) {
         if (dataType != null) {
@@ -30,10 +31,11 @@ public class ChessBoard {
         }
     }
 
-    public void selectAlgorithm(Algorithm algorithm) {
+    public void selectAlgorithm(Algorithm algorithm, int interval) {
         if (algorithm != null) {
+            this.interval = interval;
             long startTime = System.currentTimeMillis();
-            pieces.setSortingStrategy(algorithm.getSortingStrategy());
+            pieces.setSortingStrategy(algorithm.getSortingStrategy(interval));
             pieces.sort(view);
             long endTime = System.currentTimeMillis();
             System.out.println("Time: " + (endTime - startTime) + " ms");

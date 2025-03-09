@@ -12,7 +12,6 @@ public class PiecesList<T extends Comparable<T>> extends AbstractList<T> {
 
     public PiecesList(List<T> pieces) {
         this.pieces = pieces;
-        this.sortingStrategy = new BubbleSort<>();
     }
 
     public PiecesList() {

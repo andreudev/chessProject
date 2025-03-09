@@ -3,7 +3,7 @@ package com.chess.classes.pieces;
 public class Rook extends Piece {
 
     public Rook() {
-        this.priority = 3;
+        this.priority = 5;
     }
 
     public String getName() {

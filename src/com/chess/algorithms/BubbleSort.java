@@ -6,6 +6,12 @@ import com.chess.classes.pieces.Piece;
 import com.chess.arrays.PiecesList;
 
 public class BubbleSort<T extends Comparable<T>> implements SortingStrategy<T> {
+    private final int interval;
+
+    public BubbleSort(int interval) {
+        this.interval = interval;
+    }
+
     @Override
     public void sort(PiecesList<T> list, BoardView view) {
         int n = list.size();
@@ -16,6 +22,11 @@ public class BubbleSort<T extends Comparable<T>> implements SortingStrategy<T> {
                     list.set(j, list.get(j + 1));
                     list.set(j + 1, temp);
                     view.displayBoard((PiecesList<Piece>) list);
+                    try {
+                        Thread.sleep(interval);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                 }
             }
         }

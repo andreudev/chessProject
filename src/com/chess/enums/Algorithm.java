@@ -6,8 +6,9 @@ import com.chess.algorithms.BubbleSort;
 import com.chess.myexceptions.AlgorithmTypeError;
 import com.chess.myinterfaces.SortingStrategy;
 
-public enum Algorithm{
-    MERGE_SORT("Merge sort","m"), QUICK_SORT("Quick sort","q"), INSERTION_SORT("Insertion sort","i"), BUBBLE_SORT("Bubble sort","b");
+public enum Algorithm {
+    MERGE_SORT("Merge sort", "m"), QUICK_SORT("Quick sort", "q"), INSERTION_SORT("Insertion sort", "i"),
+    BUBBLE_SORT("Bubble sort", "b");
 
     private final String algorithm;
     private final String algorithmInitial;
@@ -43,12 +44,12 @@ public enum Algorithm{
         }
     }
 
-    public SortingStrategy<?> getSortingStrategy() {
+    public SortingStrategy<?> getSortingStrategy(int interval) {
         return switch (this) {
-            case MERGE_SORT, QUICK_SORT -> new QuickSort<>();
-            case INSERTION_SORT -> new InsertionSort<>();
-            case BUBBLE_SORT -> new BubbleSort<>();
-            default -> null;
+        case MERGE_SORT, QUICK_SORT -> new QuickSort<>(interval);
+        case INSERTION_SORT -> new InsertionSort<>(interval);
+        case BUBBLE_SORT -> new BubbleSort<>(interval);
+        default -> null;
         };
     }
 }

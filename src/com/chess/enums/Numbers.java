@@ -3,7 +3,7 @@ package com.chess.enums;
 import com.chess.myexceptions.NumbersTypesErrors;
 
 public enum Numbers {
-    ONE(1),TWO(2),FOUR(4),EIGHT(8), TEN(10), SIXTEEN(16);
+    ONE(1),TWO(2),FOUR(4),SIX(6),EIGHT(8), TEN(10), SIXTEEN(16);
 
     private final int value;
 

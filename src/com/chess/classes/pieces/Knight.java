@@ -3,7 +3,7 @@ package com.chess.classes.pieces;
 public class Knight extends Piece {
 
     public Knight() {
-        this.priority = 5;
+        this.priority = 4;
     }
 
     public String getName() {

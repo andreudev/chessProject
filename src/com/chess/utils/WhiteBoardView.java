@@ -19,7 +19,7 @@ public class WhiteBoardView implements BoardView {
 
     private void appendRow(StringBuilder sb, PiecesList<Piece> pieces, int row) {
         if (row == 7) {
-            appendPieces(sb, pieces, new int[] { 2, 6, 4, 0, 1, 5, 7, 3 });
+            appendPieces(sb, pieces, new int[] { 6, 4, 2, 0, 1, 3, 5, 7  });
         } else if (row == 6) {
             appendPieces(sb, pieces, new int[] { 8, 9, 10, 11, 12, 13, 14, 15 });
         } else {
@@ -29,7 +29,11 @@ public class WhiteBoardView implements BoardView {
 
     private void appendPieces(StringBuilder sb, PiecesList<Piece> pieces, int[] indices) {
         for (int index : indices) {
-            sb.append(" ").append(pieces.get(index)).append(" |");
+            if (index < pieces.size()) {
+                sb.append(" ").append(pieces.get(index)).append(" |");
+            } else {
+                sb.append("    |");
+            }
         }
     }
 
