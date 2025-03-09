@@ -10,8 +10,4 @@ public class Rook extends Piece {
         return "RK";
     }
 
-    @Override
-    public int compareTo(Piece o) {
-        return this.priority - o.priority;
-    }
 }

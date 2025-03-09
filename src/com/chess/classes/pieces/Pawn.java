@@ -10,8 +10,4 @@ public class Pawn extends Piece {
         return "PN";
     }
 
-    @Override
-    public int compareTo(Piece o) {
-        return this.priority - o.priority;
-    }
 }

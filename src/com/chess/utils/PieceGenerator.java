@@ -1,7 +1,9 @@
 package com.chess.utils;
 
 import com.chess.arrays.PiecesList;
+import com.chess.classes.pieces.Piece;
 import com.chess.enums.Numbers;
+import com.chess.myinterfaces.PieceFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,27 +12,35 @@ import java.util.Random;
 public class PieceGenerator {
     private static final Random random = new Random();
 
-    public static PiecesList<?> generateRandomPieces(String type, Numbers numbers) {
-        if (type.equals("c")) {
-            List<Character> list = new ArrayList<>();
-            while (list.size() < numbers.getValue()) {
-                int piece = 'a' + random.nextInt(numbers.getValue());
-                if (!list.contains((char) piece)) {
-                    list.add((char) piece);
+    public static PiecesList<Piece> generateRandomPieces(String type, Numbers numbers) {
+        PieceFactory factory;
+        List<Object> randomValues = new ArrayList<>();
+        List<Piece> pieces = new ArrayList<>();
+
+        if (type.equalsIgnoreCase("c")) {
+            factory = new CharacterPieceFactory();
+            while (randomValues.size() < numbers.getValue()) {
+                char piece = (char) ('a' + random.nextInt(numbers.getValue()));
+                if (!randomValues.contains(piece)) {
+                    randomValues.add(piece);
                 }
             }
-            return new PiecesList<>(list);
-        } else if (type.equals("n")) {
-            List<Integer> list = new ArrayList<>();
-            while (list.size() < numbers.getValue()) {
+        } else if (type.equalsIgnoreCase("n")) {
+            factory = new NumberPieceFactory();
+            while (randomValues.size() < numbers.getValue()) {
                 int piece = random.nextInt(numbers.getValue()) + 1;
-                if (!list.contains(piece)) {
-                    list.add(piece);
+                if (!randomValues.contains(piece)) {
+                    randomValues.add(piece);
                 }
             }
-            return new PiecesList<>(list);
+        } else {
+            return new PiecesList<>();
         }
 
-        return new PiecesList<>();
+        for (Object value : randomValues) {
+            pieces.add(factory.createPiece(value));
+        }
+
+        return new PiecesList<>(pieces);
     }
 }

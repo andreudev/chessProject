@@ -10,8 +10,4 @@ public class Bishop extends Piece {
         return "BP";
     }
 
-    @Override
-    public int compareTo(Piece o) {
-        return this.priority - o.priority;
-    }
 }
