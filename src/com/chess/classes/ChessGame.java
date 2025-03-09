@@ -5,9 +5,10 @@ import com.chess.enums.Algorithm;
 import com.chess.enums.Color;
 import com.chess.enums.DataType;
 import com.chess.enums.Numbers;
+import com.chess.utils.PieceGenerator;
 import com.chess.utils.YArgs;
 
-import java.util.*;
+import java.util.Map;
 
 public class ChessGame {
     private final Algorithm algorithm;
@@ -15,7 +16,6 @@ public class ChessGame {
     private final Color color;
     private final Numbers numbers;
     private PiecesList<?> pieces;
-    private final Random random = new Random();
 
     public ChessGame(String[] args) {
         Map<String, String> map = YArgs.splitArgs(args);
@@ -45,31 +45,7 @@ public class ChessGame {
 
     private void setPieces() {
         if (dataType != null) {
-            pieces = generateRandomPieces(dataType.getDataType());
+            pieces = PieceGenerator.generateRandomPieces(dataType.getDataType(), numbers);
         }
-    }
-
-    private PiecesList<?> generateRandomPieces(String type) {
-        if (type.equals("c")) {
-            List<Character> list = new ArrayList<>();
-            while (list.size() < numbers.getValue()) {
-                int piece = 'a' + random.nextInt(numbers.getValue());
-                if (!list.contains((char) piece)) {
-                    list.add((char) piece);
-                }
-            }
-            return new PiecesList<>(list);
-        } else if (type.equals("n")) {
-            List<Integer> list = new ArrayList<>();
-            while (list.size() < numbers.getValue()) {
-                int piece = random.nextInt(numbers.getValue()) + 1;
-                if (!list.contains(piece)) {
-                    list.add(piece);
-                }
-            }
-            return new PiecesList<>(list);
-        }
-
-        return new PiecesList<>();
     }
 }
