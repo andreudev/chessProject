@@ -10,38 +10,32 @@ public class BlackBoardView implements BoardView {
         StringBuilder sb = new StringBuilder();
         sb.append(" +----+----+----+----+----+----+----+----+\n");
         for (int i = 0; i < 8; i++) {
-            sb.append(8-i).append("|");
-
-            if (i==0) {
-                sb.append(" ").append(pieces.get(2)).append(" |");
-                sb.append(" ").append(pieces.get(6)).append(" |");
-                sb.append(" ").append(pieces.get(4)).append(" |");
-                sb.append(" ").append(pieces.get(0)).append(" |");
-                sb.append(" ").append(pieces.get(1)).append(" |");
-                sb.append(" ").append(pieces.get(5)).append(" |");
-                sb.append(" ").append(pieces.get(7)).append(" |");
-                sb.append(" ").append(pieces.get(3)).append(" |");
-
-            } else if (i==1) {
-                sb.append(" ").append(pieces.get(8)).append(" |");
-                sb.append(" ").append(pieces.get(9)).append(" |");
-                sb.append(" ").append(pieces.get(10)).append(" |");
-                sb.append(" ").append(pieces.get(11)).append(" |");
-                sb.append(" ").append(pieces.get(12)).append(" |");
-                sb.append(" ").append(pieces.get(13)).append(" |");
-                sb.append(" ").append(pieces.get(14)).append(" |");
-                sb.append(" ").append(pieces.get(15)).append(" |");
-            } else
-            {
-                for (int j = 0; j < 8; j++) {
-                    sb.append(" ");
-                    sb.append("  ");
-                    sb.append(" |");
-                }
-            }
-
+            sb.append(8 - i).append("|");
+            appendRow(sb, pieces, i);
             sb.append("\n +----+----+----+----+----+----+----+----+\n");
         }
         System.out.println(sb.toString());
+    }
+
+    private void appendRow(StringBuilder sb, PiecesList<Piece> pieces, int row) {
+        if (row == 0) {
+            appendPieces(sb, pieces, new int[] { 2, 6, 4, 0, 1, 5, 7, 3 });
+        } else if (row == 1) {
+            appendPieces(sb, pieces, new int[] { 8, 9, 10, 11, 12, 13, 14, 15 });
+        } else {
+            appendEmptyRow(sb);
+        }
+    }
+
+    private void appendPieces(StringBuilder sb, PiecesList<Piece> pieces, int[] indices) {
+        for (int index : indices) {
+            sb.append(" ").append(pieces.get(index)).append(" |");
+        }
+    }
+
+    private void appendEmptyRow(StringBuilder sb) {
+        for (int j = 0; j < 8; j++) {
+            sb.append("    |");
+        }
     }
 }

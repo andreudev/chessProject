@@ -19,7 +19,6 @@ public class ChessBoard {
         if (dataType != null) {
             pieces = PieceGenerator.generateRandomPieces(dataType.getDataType(), numbers);
             setBoardView(color);
-            view.displayBoard(pieces);
         }
     }
 
