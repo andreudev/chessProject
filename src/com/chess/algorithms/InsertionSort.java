@@ -5,13 +5,29 @@ import com.chess.myinterfaces.BoardView;
 import com.chess.classes.pieces.Piece;
 import com.chess.arrays.PiecesList;
 
+/**
+ * The InsertionSort class implements the insertion sort algorithm for sorting pieces on a chessboard.
+ *
+ * @param <T> the type of elements to be sorted, which must be comparable
+ */
 public class InsertionSort<T extends Comparable<T>> implements SortingStrategy<T> {
     private final int interval;
 
+    /**
+     * Constructs an InsertionSort instance with the specified interval.
+     *
+     * @param interval the interval in milliseconds between each insertion operation
+     */
     public InsertionSort(int interval) {
         this.interval = interval;
     }
 
+    /**
+     * Sorts the given list of pieces using the insertion sort algorithm and updates the board view.
+     *
+     * @param list the list of pieces to be sorted
+     * @param view the board view to be updated after each insertion
+     */
     @Override
     public void sort(PiecesList<T> list, BoardView view) {
         for (int i = 1; i < list.size(); i++) {

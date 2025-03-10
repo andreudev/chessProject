@@ -5,13 +5,29 @@ import com.chess.myinterfaces.BoardView;
 import com.chess.classes.pieces.Piece;
 import com.chess.arrays.PiecesList;
 
+/**
+ * The BubbleSort class implements the bubble sort algorithm for sorting pieces on a chessboard.
+ *
+ * @param <T> the type of elements to be sorted, which must be comparable
+ */
 public class BubbleSort<T extends Comparable<T>> implements SortingStrategy<T> {
     private final int interval;
 
+    /**
+     * Constructs a BubbleSort instance with the specified interval.
+     *
+     * @param interval the interval in milliseconds between each swap operation
+     */
     public BubbleSort(int interval) {
         this.interval = interval;
     }
 
+    /**
+     * Sorts the given list of pieces using the bubble sort algorithm and updates the board view.
+     *
+     * @param list the list of pieces to be sorted
+     * @param view the board view to be updated after each swap
+     */
     @Override
     public void sort(PiecesList<T> list, BoardView view) {
         int n = list.size();

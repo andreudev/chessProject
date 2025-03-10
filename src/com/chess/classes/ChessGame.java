@@ -6,7 +6,6 @@ import com.chess.enums.Algorithm;
 import com.chess.enums.Color;
 import com.chess.enums.DataType;
 import com.chess.enums.Numbers;
-import com.chess.utils.PieceGenerator;
 import com.chess.utils.YArgs;
 
 import java.util.Map;
